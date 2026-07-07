@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giovanni Tommasi — Curriculum Vitae</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    doc-page:not(:defined) { visibility: hidden; }
+
+    :root {
+      --ink: #0a0a0a;
+      --paper: #f4f1ea;
+      --paper-2: #ebe7dd;
+      --muted: rgba(10, 10, 10, 0.55);
+      --line: rgba(10, 10, 10, 0.14);
+      --line-strong: rgba(10, 10, 10, 0.72);
+      --accent: #7A3FD0;
+      --f-display: "Space Grotesk", sans-serif;
+      --f-mono: "JetBrains Mono", monospace;
+      --f-body: "Inter", sans-serif;
+    }
+
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    doc-page {
+      font-family: var(--f-body);
+      color: var(--ink);
+      font-size: 9pt;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- MASTHEAD ---------- */
+    .eyebrow {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 9px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+    .eyebrow .dot { color: var(--accent); }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr 126px;
+      gap: 34px;
+      align-items: start;
+    }
+    .cv-name {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 32pt;
+      letter-spacing: -0.035em;
+      line-height: 0.9;
+      margin: 0 0 0 -3px;
+    }
+    .cv-role {
+      font-family: var(--f-mono);
+      font-size: 8.5pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 12px;
+      margin-left: 4px;
+    }
+    .cv-summary {
+      font-family: var(--f-body);
+      font-weight: 400;
+      font-size: 9pt;
+      line-height: 1.5;
+      letter-spacing: 0;
+      color: var(--muted);
+      margin: 12px 0 0;
+      max-width: 48ch;
+      text-wrap: pretty;
+    }
+    .cv-summary { font-size: 7.4pt; }
+    .cv-summary .accent { color: var(--accent); }
+    .cv-summary .accent { color: var(--accent); }
+    .cv-tags {
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 14px;
+      display: flex;
+      gap: 16px;
+    }
+
+    /* portrait */
+    .portrait {
+      position: relative;
+      margin-top: 0;
+    }
+    .portrait .pf { position: relative; }
+    .portrait .frame {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--paper-2);
+    }
+    .portrait .frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+    .portrait .cnr {
+      position: absolute; width: 15px; height: 15px;
+      border: 1.5px solid var(--ink);
+    }
+    .portrait .cnr.tl { top: -8px; left: -8px; border-right: 0; border-bottom: 0; }
+    .portrait .cnr.tr { top: -8px; right: -8px; border-left: 0; border-bottom: 0; }
+    .portrait .cnr.bl { bottom: -8px; left: -8px; border-right: 0; border-top: 0; }
+    .portrait .cnr.br { bottom: -8px; right: -8px; border-left: 0; border-top: 0; }
+    .portrait .cap {
+      display: flex; justify-content: space-between;
+      margin-top: 8px;
+      font-family: var(--f-mono);
+      font-size: 6.5pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* contact bar */
+    .contact-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 18px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .contact-bar .c {
+      background: #fff;
+      padding: 10px 12px;
+    }
+    .contact-bar .c .k {
+      font-family: var(--f-mono);
+      font-size: 6.5pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 3px;
+    }
+    .contact-bar .c .k svg { width: 10px; height: 10px; flex-shrink: 0; }
+    .contact-bar .c .v {
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      letter-spacing: 0.01em;
+    }
+    .contact-bar .c a { color: var(--ink); text-decoration: none; }
+
+    /* ---------- SECTION ---------- */
+    .sec { margin-top: 24px; }
+    .sec-gap { margin-top: 40px; }
+    .pagebreak { break-before: page; margin-top: 34px; }
+    @media print { .pagebreak { margin-top: 0; } }
+    .sec-title {
+      font-family: var(--f-mono);
+      font-size: 9pt;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line-strong);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .sec-title .ix { color: var(--muted); font-weight: 400; }
+
+    /* ---------- EXPERIENCE ---------- */
+    .job {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+      padding-bottom: 22px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+    .job:last-child { border-bottom: 0; margin-bottom: 0; }
+    .job:first-child { margin-top: 6px; }
+    .job-side { display: flex; flex-direction: column; gap: 10px; }
+    .job-when {
+      font-family: var(--f-mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .job-logo { height: 46px; display: flex; align-items: center; }
+    .job-logo img { height: 100%; width: auto; max-width: 150px; object-fit: contain; }
+    .job-co {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 15pt;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .job-role {
+      font-family: var(--f-mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    ul.pts {
+      list-style: none;
+      margin: 0 0 16px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    ul.pts li {
+      position: relative;
+      padding-left: 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      font-size: 8.6pt;
+      font-weight: 300;
+      line-height: 1.45;
+      text-wrap: pretty;
+    }
+    ul.pts li:last-child { border-bottom: 0; padding-bottom: 0; }
+    ul.pts li::before {
+      display: none;
+    }
+    ul.pts li b { font-weight: 500; color: var(--ink); }
+
+    /* logo strip */
+    .logostrip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+      margin-top: 14px;
+    }
+    .logostrip .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px 4px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+    .logostrip .chip img { height: 13px; width: auto; max-width: 16px; object-fit: contain; display: block; }
+    .logostrip .chip span {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- STACK GRID ---------- */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 36px;
+    }
+    .stack-cat { break-inside: avoid; }
+    .stack-cat.full { grid-column: 1 / -1; }
+    .stack-cat .lbl {
+      font-family: var(--f-mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 8px;
+      margin-bottom: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px 4px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+    .chip img { height: 13px; width: auto; max-width: 16px; object-fit: contain; display: block; }
+    .chip span {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    /* ---------- ROWS (edu / projects / achievements) ---------- */
+    .edu {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+    .edu:last-child { border-bottom: 0; }
+    .edu-crest { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .edu-crest img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .edu-main { flex: 1; }
+    .edu-main .t { font-family: var(--f-display); font-weight: 500; font-size: 12pt; letter-spacing: -0.01em; line-height: 1.1; }
+    .edu-main .deg { font-family: var(--f-display); font-weight: 400; font-size: 10pt; letter-spacing: -0.005em; color: var(--muted); margin-top: 2px; }
+    .edu-main .s { color: var(--muted); font-size: 8.5pt; margin-top: 5px; }
+    .edu-when {
+      font-family: var(--f-mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+    .proj {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+    }
+    .two .proj:nth-last-child(-n+2) { border-bottom: 0; }
+    .proj-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    }
+    .proj-name { font-family: var(--f-display); font-weight: 600; font-size: 10pt; letter-spacing: -0.01em; }
+    .proj-when {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .proj-desc { color: var(--muted); font-size: 8.5pt; line-height: 1.4; margin-top: 2px; }
+    .proj-stack {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+
+    /* research — larger, higher-importance entries */
+    .rlist { display: flex; flex-direction: column; gap: 10px; }
+    .ritem {
+      display: grid;
+      grid-template-columns: 172px 1fr;
+      gap: 26px;
+      padding: 14px 20px;
+      border: 1px solid var(--line);
+      break-inside: avoid;
+    }
+    .ritem:last-child { padding-bottom: 14px; }
+    .ritem-name { font-family: var(--f-display); font-weight: 600; font-size: 13pt; letter-spacing: -0.02em; line-height: 1.05; display: flex; align-items: center; gap: 9px; }
+    .ritem-name img { height: 18px; width: auto; max-width: 38px; object-fit: contain; }
+    .ritem-tag {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .ritem-desc { font-size: 8.6pt; font-weight: 300; line-height: 1.5; text-wrap: pretty; }
+    .ritem-stack {
+      font-family: var(--f-mono);
+      font-size: 7.5pt;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    /* achievement highlight */
+    .highlight {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      padding: 12px 18px;
+      margin-bottom: 8px;
+      break-inside: avoid;
+      border-color: var(--line);
+    }
+    .highlight .h-main { font-family: var(--f-display); font-weight: 600; font-size: 14pt; letter-spacing: -0.02em; }
+    .highlight .h-sub { font-size: 8.5pt; color: var(--muted); margin-top: 3px; }
+    .highlight .h-metric {
+      font-family: var(--f-mono);
+      font-size: 8pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: right;
+      white-space: nowrap;
+      color: var(--accent);
+    }
+    .highlight .h-metric b { color: var(--ink); font-size: 12pt; display: block; letter-spacing: -0.01em; }
+
+    .foot-note {
+      font-family: var(--f-mono);
+      font-size: 7pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <doc-page size="a4" margin="0.55in">
+
+    <div class="eyebrow">
+      <span style="color: var(--accent);">Curriculum Vitae</span>
+      <span>Full-Stack Engineer · Milan, IT</span>
+    </div>
+
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <div>
+        <h1 class="cv-name">Giovanni<br>Tommasi</h1>
+        <div class="cv-role">AI · Web · Graphics</div>
+        <p class="cv-summary">Computer Science Engineer working across full-stack web applications, artificial intelligence and computer graphics. Researched at Shanghai Jiao Tong University and graduated at Politecnico di Milano.</p>
+      </div>
+      <div class="portrait">
+        <div class="pf">
+          <div class="frame">
+            <img src="../assets/portrait.jpg" alt="Giovanni Tommasi" />
+          </div>
+        </div>
+        <div class="cap"><span>G. Tommasi</span><span>MI / IT</span></div>
+      </div>
+    </header>
+
+    <div class="contact-bar">
+      <div class="c"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4.5" width="20" height="15" rx="2"/><path d="m2.5 6.5 9.5 7 9.5-7"/></svg>Email</span><span class="v"><a href="mailto:giovannitommasi95@gmail.com">giovannitommasi95@gmail.com</a></span></div>
+      <div class="c"><span class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 005 5L20 13l2 5v3a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1z"/></svg>Phone</span><span class="v">+39 392 400 4397</span></div>
+      <div class="c"><span class="k"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12.3c0 5.2 3.4 9.6 8.1 11.2.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 5 18.3 5.3 18.3 5.3c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.7-1.6 8.1-6 8.1-11.2C23.5 5.7 18.3.5 12 .5z"/></svg>GitHub</span><span class="v"><a href="https://github.com/Giogia">github.com/Giogia</a></span></div>
+      <div class="c"><span class="k"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/giovanni-tommasi/">in/giovanni-tommasi</a></span></div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section class="sec">
+      <div class="sec-title"><span>Experience</span><span class="ix">01</span></div>
+
+      <div class="job">
+        <div class="job-side">
+          <div class="job-when">2024 — Present</div>
+          <div class="job-logo"><img src="../assets/logos/Fankee-badge.png" alt="Fankee" /></div>
+          <div class="job-co">Fankee</div>
+          <div class="job-role">Founding Engineer</div>
+        </div>
+        <div class="job-content">
+          <ul class="pts">
+            <li>Designed and built <b>fan-engagement platforms</b> on behalf of famous artists (HUGEL, David Guetta).</li>
+            <li><b>End-to-end ownership</b> of a media-intensive platform serving <b>10k+ users</b>.</li>
+            <li>Built a <b>progressive web app</b> and website that stream music and let fans <b>buy shares of a song</b>.</li>
+            <li>Feature design and implementation <b>end to end</b>, owning the <b>architectural decisions</b>.</li>
+            <li>Managing <b>external software houses</b>, teams and freelancers — choosing the right tools and aligning partner teams.</li>
+            <li>Currently prototyping the <b>native mobile app</b>.</li>
+          </ul>
+          <div class="logostrip">
+            <span class="chip"><img src="../assets/tools/NextJS.svg" alt="">Next.js</span>
+            <span class="chip"><img src="../assets/tools/ReactJS.png" alt="">React</span>
+            <span class="chip"><img src="../assets/tools/TS.png" alt="">TypeScript</span>
+            <span class="chip"><img src="../assets/tools/Tailwind.svg" alt="">Tailwind</span>
+            <span class="chip"><img src="../assets/tools/Supabase.svg" alt="">Supabase</span>
+            <span class="chip"><img src="../assets/tools/Vercel.svg" alt="">Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-side">
+          <div class="job-when">2020 — 2024</div>
+          <div class="job-logo"><img src="../assets/logos/Mia-Platform-2x.png" alt="Mia-Platform" /></div>
+          <div class="job-co">Mia-Platform</div>
+          <div class="job-role">Full-Stack Dev · Expert</div>
+        </div>
+        <div class="job-content">
+          <ul class="pts">
+            <li>Product team building a <b>digital integration hub</b> — microservices, composable architectures, Kubernetes.</li>
+            <li><b>Maintainer</b> of the design system's component library (Storybook, Figma design tokens).</li>
+            <li>Led platform <b>themification</b> (dark mode) and set up the design-system open-source library.</li>
+            <li>Built a <b>modular back office</b> — microfrontends, Web Components, StencilJS, micro-lc.</li>
+            <li>Integrated Git providers (Azure DevOps, Bitbucket) · <b>trained and mentored</b> junior team members.</li>
+          </ul>
+          <div class="logostrip">
+            <span class="chip"><img src="../assets/tools/ReactJS.png" alt="">React</span>
+            <span class="chip"><img src="../assets/tools/ReduxJS.png" alt="">Redux</span>
+            <span class="chip"><img src="../assets/tools/Ant.png" alt="">Ant</span>
+            <span class="chip"><img src="../assets/tools/StencilJS.png" alt="">Stencil</span>
+            <span class="chip"><img src="../assets/tools/Storybook.png" alt="">Storybook</span>
+            <span class="chip"><img src="../assets/tools/NodeJS.png" alt="">Node</span>
+            <span class="chip"><img src="../assets/tools/Fastify.png" alt="">Fastify</span>
+            <span class="chip"><img src="../assets/tools/MongoDB.png" alt="">Mongo</span>
+            <span class="chip"><img src="../assets/tools/Kubernetes.png" alt="">K8s</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK & TOOLS -->
+    <section class="sec pagebreak">
+      <div class="sec-title"><span>Stack &amp; Tools</span><span class="ix">02</span></div>
+      <div class="stack-grid">
+        <div class="stack-cat full">
+          <div class="lbl">Languages</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/TS.png" alt="">TypeScript</span>
+            <span class="chip"><img src="../assets/tools/JS.png" alt="">JavaScript</span>
+            <span class="chip"><img src="../assets/tools/Python.png" alt="">Python</span>
+            <span class="chip"><img src="../assets/tools/Java.png" alt="">Java</span>
+            <span class="chip"><img src="../assets/tools/Swift.png" alt="">Swift</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <div class="lbl">Front-end</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/ReactJS.png" alt="">React</span>
+            <span class="chip"><img src="../assets/tools/NextJS.svg" alt="">Next.js</span>
+            <span class="chip"><img src="../assets/tools/ReduxJS.png" alt="">Redux</span>
+            <span class="chip"><img src="../assets/tools/Tailwind.svg" alt="">Tailwind</span>
+            <span class="chip"><img src="../assets/tools/Mui.png" alt="">MUI</span>
+            <span class="chip"><img src="../assets/tools/StencilJS.png" alt="">Stencil</span>
+            <span class="chip"><img src="../assets/tools/Storybook.png" alt="">Storybook</span>
+            <span class="chip"><img src="../assets/tools/Figma.png" alt="">Figma</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <div class="lbl">Back-end &amp; Data</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/NodeJS.png" alt="">Node.js</span>
+            <span class="chip"><img src="../assets/tools/Fastify.png" alt="">Fastify</span>
+            <span class="chip"><img src="../assets/tools/GraphQL.png" alt="">GraphQL</span>
+            <span class="chip"><img src="../assets/tools/Relay.png" alt="">Relay</span>
+            <span class="chip"><img src="../assets/tools/Supabase.svg" alt="">Supabase</span>
+            <span class="chip"><img src="../assets/tools/MongoDB.png" alt="">MongoDB</span>
+            <span class="chip"><img src="../assets/tools/Postgres.svg" alt="">Postgres</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <div class="lbl">Cloud &amp; Tooling</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/Docker.png" alt="">Docker</span>
+            <span class="chip"><img src="../assets/tools/Kubernetes.png" alt="">Kubernetes</span>
+            <span class="chip"><img src="../assets/tools/Vercel.svg" alt="">Vercel</span>
+            <span class="chip"><img src="../assets/tools/Gitlab.png" alt="">GitLab</span>
+            <span class="chip"><img src="../assets/tools/Playwright.png" alt="">Playwright</span>
+            <span class="chip"><img src="../assets/tools/Jest.png" alt="">Jest</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <div class="lbl">AI &amp; ML</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/Claude.svg" alt="">Claude</span>
+            <span class="chip"><img src="../assets/tools/OpenAI.svg" alt="">Codex</span>
+            <span class="chip"><img src="../assets/tools/Pytorch.png" alt="">PyTorch</span>
+            <span class="chip"><img src="../assets/tools/Tensorflow.png" alt="">TensorFlow</span>
+            <span class="chip"><img src="../assets/tools/Keras.svg" alt="">Keras</span>
+            <span class="chip"><img src="../assets/tools/ScikitLearn.png" alt="">scikit-learn</span>
+            <span class="chip"><img src="../assets/tools/Pandas.svg" alt="">Pandas</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <div class="lbl">Graphics &amp; Prototypes</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/OpenCV.png" alt="">OpenCV</span>
+            <span class="chip"><img src="../assets/tools/Blender.png" alt="">Blender</span>
+            <span class="chip"><img src="../assets/tools/WebGL.png" alt="">WebGL</span>
+            <span class="chip"><img src="../assets/tools/Arduino.png" alt="">Arduino</span>
+            <span class="chip"><img src="../assets/tools/RaspberryPi.png" alt="">Raspberry Pi</span>
+          </div>
+        </div>
+        <div class="stack-cat">
+          <div class="lbl">Media</div>
+          <div class="chips">
+            <span class="chip"><img src="../assets/tools/FinalCut.png" alt="">Final Cut Pro</span>
+            <span class="chip"><img src="../assets/tools/Premiere.png" alt="">Premiere Pro</span>
+            <span class="chip"><img src="../assets/tools/Photoshop.png" alt="">Photoshop</span>
+            <span class="chip"><img src="../assets/tools/Lightroom.png" alt="">Lightroom</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & RESEARCH -->
+    <section class="sec sec-gap">
+      <div class="sec-title"><span>Achievements &amp; Research</span><span class="ix">03</span></div>
+
+      <div class="highlight">
+        <div>
+          <div class="h-main">Google Hash Code 2022</div>
+          <div class="h-sub">Team “Gophing Around” — optimization coding competition.</div>
+        </div>
+        <div class="h-metric">99th worldwide<b>3,360,259 pts</b></div>
+      </div>
+
+      <div class="rlist">
+        <div class="ritem">
+          <div>
+            <div class="ritem-name">Neural Scene Rendering</div>
+            <div class="ritem-tag">MSc Thesis · 2020</div>
+          </div>
+          <div>
+            <div class="ritem-desc">Reconstructing novel viewpoints of realistic 3D scenes filmed with multiple depth cameras; latent-space generation with a Variational Autoencoder and volumetric raytracing.</div>
+            <div class="ritem-stack">Python · PyTorch · Blender · Google Colab</div>
+          </div>
+        </div>
+        <div class="ritem">
+          <div>
+            <div class="ritem-name">Abbot<img src="../assets/logos/Abbot.png" alt=""></div>
+            <div class="ritem-tag">Publication · AVI 2018</div>
+          </div>
+          <div>
+            <div class="ritem-desc"><span style="font-weight: 500;">Accepted paper for the International Conference on Advanced Visual Interfaces.</span> Object recognition with Google Cloud Vision, a Swift mobile app, and an exploratory study with 160 children.</div>
+            <div class="ritem-stack">Swift · Google Cloud Vision · Raspberry Pi · Arduino Nano</div>
+          </div>
+        </div>
+        <div class="ritem">
+          <div>
+            <div class="ritem-name">Helmate<img src="../assets/logos/Honda.png" alt=""></div>
+            <div class="ritem-tag">Honda Motor @ Polifactory · 2018</div>
+          </div>
+          <div>
+            <div class="ritem-desc">Hands-free voice control in a wearable object designed with car-design students; bone-conduction speakers and laryngophone.</div>
+            <div class="ritem-stack">Linux · PocketSphinx · BlueZ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="sec pagebreak">
+      <div class="sec-title"><span>Education</span><span class="ix">04</span></div>
+      <div class="edu">
+        <div class="edu-crest"><img src="../assets/logos/Politecnico-2x.png" alt="Politecnico di Milano" /></div>
+        <div class="edu-main">
+          <div class="t">Politecnico di Milano</div>
+          <div class="deg">MSc Computer Science &amp; Engineering</div>
+          <div class="s"><span style="font-weight: 600;">Master 109/110</span> · Bachelor 99/110 · Thesis: Neural Scene Rendering</div>
+        </div>
+        <div class="edu-when">2014 — 2020</div>
+      </div>
+      <div class="edu">
+        <div class="edu-crest"><img src="../assets/logos/JiaoTong-2x.png" alt="Shanghai Jiao Tong University" /></div>
+        <div class="edu-main">
+          <div class="t">Shanghai Jiao Tong University</div>
+          <div class="deg">Researcher</div>
+          <div class="s">Digital Media &amp; Data Reconstruction Laboratory · <span style="font-weight: 600;">GPA 3.76 / 4.0</span></div>
+        </div>
+        <div class="edu-when">2018 — 2019</div>
+      </div>
+    </section>
+
+    <!-- SELECTED PROJECTS -->
+    <section class="sec sec-gap">
+      <div class="sec-title"><span>Selected Projects</span><span class="ix">05</span></div>
+      <div class="two">
+        <div class="proj">
+          <div class="proj-head"><span class="proj-name">Video Manager</span><span class="proj-when">2022</span></div>
+          <div class="proj-desc">Web app to stream and organize video files in folders.</div>
+          <div class="proj-stack">MUI · Relay · GraphQL · GridFS</div>
+        </div>
+        <div class="proj">
+          <div class="proj-head"><span class="proj-name">Room Planner</span><span class="proj-when">2019</span></div>
+          <div class="proj-desc">Graphic engine rendering an interactive 3D room and placing furniture.</div>
+          <div class="proj-stack">WebGL 2.0</div>
+        </div>
+        <div class="proj">
+          <div class="proj-head"><span class="proj-name">Fashion-MNIST Classification</span><span class="proj-when">2019</span></div>
+          <div class="proj-desc">Comparison of machine-learning models categorizing clothes.</div>
+          <div class="proj-stack">Jupyter · scikit-learn</div>
+        </div>
+        <div class="proj">
+          <div class="proj-head"><span class="proj-name">Style Transfer</span><span class="proj-when">2018</span></div>
+          <div class="proj-desc">Optimizing the performance of the Gatys style-transfer architecture.</div>
+          <div class="proj-stack">Convolutional Neural Networks</div>
+        </div>
+        <div class="proj">
+          <div class="proj-head"><span class="proj-name">Room Reconstruction</span><span class="proj-when">2018</span></div>
+          <div class="proj-desc">Layout &amp; corner estimation, depth map, mesh extrusion from a single image.</div>
+          <div class="proj-stack">LayoutNet · OpenCV</div>
+        </div>
+        <div class="proj">
+          <div class="proj-head"><span class="proj-name">SiamFC Object Tracking</span><span class="proj-when">2019</span></div>
+          <div class="proj-desc">Implementation and hyperparameter tuning of a real-time object-tracking algorithm.</div>
+          <div class="proj-stack">Siamese Nets · TensorFlow</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot-note">Giovanni Tommasi · +39 392 400 4397 · giovannitommasi95@gmail.com</div>
+
+  </doc-page>
+  <script src="doc-page.js"></script>
+</body>
+</html>

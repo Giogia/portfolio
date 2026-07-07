@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giovanni Tommasi — Full-Stack Engineer / Milan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <script async src="https://www.instagram.com/embed.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    // Benign, intermittent browser warning (harmless layout-observation notice) — keep it out of the console.
+    window.addEventListener('error', function (e) {
+      if (e && e.message && e.message.indexOf('ResizeObserver loop') !== -1) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+      }
+    });
+  </script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="faulty-terminal.js"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="chrome.jsx"></script>
+  <script type="text/babel" src="top-sections.jsx"></script>
+  <script type="text/babel" src="bottom-sections.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    const SECTIONS = [
+      { id: 'top', label: 'Index' },
+      { id: 'about', label: 'About' },
+      { id: 'services', label: 'Services' },
+      { id: 'work', label: 'Work' },
+      { id: 'photos', label: 'Photos' },
+      { id: 'video', label: 'Video' },
+      { id: 'music', label: 'Music' },
+      { id: 'contact', label: 'Contact' },
+    ];
+
+    function App() {
+      const [active, setActive] = useState('top');
+
+      useEffect(() => {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) setActive(e.target.id);
+          });
+        }, { threshold: 0.3 });
+        SECTIONS.forEach(s => {
+          const el = document.getElementById(s.id);
+          if (el) obs.observe(el);
+        });
+
+        // fade-in observer
+        const fadeObs = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in');
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+        return () => { obs.disconnect(); fadeObs.disconnect(); };
+      }, []);
+
+      const jump = (id) => {
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
+      };
+
+      return (
+        <React.Fragment>
+          <Cursor />
+          <Topbar />
+          <SideNav sections={SECTIONS} active={active} onJump={jump} dark={['top','work','video','contact'].includes(active)} />
+          <main>
+            <HeroSection />
+            <AboutSection />
+            <ServicesSection />
+            <WorkSection />
+            <InstagramSection />
+            <VideoSection />
+            <MusicSection />
+            <ContactSection />
+          </main>
+          <footer className="foot">
+            <div className="grow">
+              <span>© 2026 Giovanni Tommasi</span>
+              <span>Made in Riva del Garda</span>
+            </div>
+            <div className="grow foot-icons">
+              <a href="https://github.com/Giogia" target="_blank" rel="noreferrer" aria-label="GitHub" data-cursor="hover">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.56 22.29 24 17.79 24 12.5 24 5.87 18.63.5 12 .5z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/giovanni-tommasi/" target="_blank" rel="noreferrer" aria-label="LinkedIn" data-cursor="hover">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+              </a>
+              <a href="mailto:giovannitommasi95@gmail.com" aria-label="Email" data-cursor="hover">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="1.5" y="3" width="21" height="18" rx="2.5"/><path d="m2.5 5.5 9.5 7L21.5 5.5"/></svg>
+              </a>
+            </div>
+          </footer>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
